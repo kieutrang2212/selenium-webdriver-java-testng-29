@@ -43,7 +43,7 @@ public class Topic_04_Relative_Locator {
 //      RelativeLocator.with(By.tagName("label")).toRightOf(rememberMeCheckbox);
         System.out.println(rememberMeTextElement.getText());
     }
-
+    
     @Test
     public void TC_02_() {
 

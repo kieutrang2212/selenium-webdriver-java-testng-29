@@ -9,10 +9,11 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class Topic_02_Selenium_Locator {
+public class Topic_06_Register {
     WebDriver driver;
     String projectPath = System.getProperty("user.dir");
     String osName = System.getProperty("os.name");
+    String username,password;
 
     @BeforeClass
     public void beforeClass() {
@@ -24,43 +25,31 @@ public class Topic_02_Selenium_Locator {
 
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get("https://demo.nopcommerce.com/register");
-    }
-
-//    TestNG:   Order testcase theo Alphabet(0-9 A-Z)
-    @Test
-    public void TC_01_ID() {
-        driver.findElement(By.id("FirstName"));
     }
 
     @Test
-    public void TC_02_Class() {
-        driver.findElement(By.className("header-logo"));
+    public void TC_01_Register() {
+        // Truy cap vao trang Register- https://demo.guru99.com/
+        //Nhap vao 1 email bat ki
+        //click Submit button
+        // Get username and password luu vao 1 bien
 
+        username = driver.findElement(By.xpath("//td[text()='User ID :']/following-sibling::td")).getText();
+        password = driver.findElement(By.xpath("//td[text()='Password :']/following-sibling::td")).getText();
     }
 
     @Test
-    public void TC_03_Name() {
-        driver.findElement(By.name("DateOfBirthDay"));
+    public void TC_02_Login() {
+        //Truy cap vao trang Login-https://demo.guru99.com/V4/
+        //Nhap username/password o man hinh Register vao
+        driver.findElements(By.name("uid")).sendKeys(username);
+        driver.findElements(By.name("password")).sendKeys(password);
     }
 
     @Test
-    public void TC_04_TagName() {
-        driver.findElements(By.tagName("input"));
+    public void TC_03_() {
+
     }
-
-    @Test
-    public void TC_05_LinkText() {
-        driver.findElements(By.linkText("Shipping & returns"));
-    }
-
-    @Test
-    public void TC_06_Partial_LinkText() {
-        driver.findElements(By.partialLinkText("Shipping"));
-    }
-
-
-
     @AfterClass
     public void afterClass() {
         driver.quit();
