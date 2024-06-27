@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class Topic_06_Chrome_Commands {
+public class Topic_06_Chrome_Commands_01 {
     WebDriver driver;
 
     //Cac cau lenh thao tac voi element
