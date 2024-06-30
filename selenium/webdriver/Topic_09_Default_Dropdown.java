@@ -4,12 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -67,8 +70,9 @@ public class Topic_09_Default_Dropdown {
     public void TC_02_Login() {
         driver.get("https://demo.nopcommerce.com/");
 
-        sleepInSeconds(5);
-        driver.findElement(By.cssSelector("a.ico-login")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("a.ico-login")));
+        driver.findElement(By.className("ico-login")).click();
         sleepInSeconds(2);
         driver.findElement(By.id("Email")).sendKeys(emailAddress);
         driver.findElement(By.id("Password")).sendKeys(password);
